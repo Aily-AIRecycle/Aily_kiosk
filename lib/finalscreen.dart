@@ -55,7 +55,9 @@ class _FinalScreenState extends State<FinalScreen> {
               SizedBox(
                 width: deviceWidth * 0.03,
               ),
-              const Image(image: Svg("assets/images/AiLY.svg"))
+              Image(
+                  height: deviceHeight * 0.12,
+                  image: const Svg("assets/images/AiLY.svg"))
             ],
           ),
           centerTitle: false,
