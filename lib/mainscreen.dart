@@ -35,6 +35,13 @@ class MainScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            SizedBox(
+              width: deviceWidth * 0.4,
+              child: Image.asset("assets/images/temp.png"),
+            ),
+            SizedBox(
+              height: deviceHeight * 0.04,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

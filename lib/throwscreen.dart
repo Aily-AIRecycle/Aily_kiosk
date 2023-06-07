@@ -125,7 +125,7 @@ class ThrowScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   width: deviceWidth * 0.4,
-                  child: Image.asset("assets/images/temp.jpg"),
+                  child: Image.asset("assets/images/temp.png"),
                 ),
                 SizedBox(
                   width: deviceWidth * 0.4,
