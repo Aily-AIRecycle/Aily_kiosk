@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:aily_kiosk/loadingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:process_run/shell.dart';
 
 class ThrowScreen extends StatelessWidget {
   const ThrowScreen({super.key});
@@ -9,6 +12,8 @@ class ThrowScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var deviceHeight = MediaQuery.of(context).size.height;
     var deviceWidth = MediaQuery.of(context).size.width;
+    var shell = Shell();
+
 
     return WillPopScope(
       onWillPop: () async => false,
@@ -164,7 +169,13 @@ class ThrowScreen extends StatelessWidget {
                   height: deviceHeight * 0.25,
                   width: deviceWidth * 0.4,
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+
+                      await shell.run('''
+                      python "C:\\Aily\\yolov5\\exit_pause.py"
+                      ''');
+                      
+                    
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return const LoadingScreen();
