@@ -1,8 +1,34 @@
 import 'dart:async';
+import 'dart:io';
+import 'package:path/path.dart' as path;
 
 import 'package:aily_kiosk/choosescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+
+Future<String> readFile() async {
+  var directory = Directory('C:\\Aily\\Aily_ai\\User_Data\\');
+  var files = directory.listSync();
+
+  if (files.isNotEmpty) {
+    files.sort((a, b) {
+      var aName = path.basename(a.path);
+      var bName = path.basename(b.path);
+      return bName.compareTo(aName);
+    });
+    var lastFile = files.first;
+    if (lastFile is File) {
+      var filePath = lastFile.path;
+      var fileContent = File(filePath).readAsStringSync();
+      print(filePath);
+      return fileContent;
+    } else {
+      return '';
+    }
+  } else {
+    return '';
+  }
+}
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
@@ -12,14 +38,38 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  Future<int> defineSeconds() async {
+    String fileContent = await readFile();
+    int seconds;
+    if (fileContent.toString() == "1.0") {
+      seconds = 0;
+    } else if (fileContent.toString() == "2.0") {
+      seconds = 38;
+    } else if (fileContent.toString() == "3.0") {
+      seconds = 70;
+    } else {
+      seconds = 0;
+    }
+    print(fileContent);
+    print(seconds);
+    return seconds;
+  }
+
   @override
   void initState() {
-    Timer(const Duration(seconds: 10), () {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) {
-          return const ChooseScreen();
-        },
-      ));
+    Timer(const Duration(seconds: 5), () {
+      defineSeconds().then(
+        (seconds) => Timer(
+          Duration(seconds: seconds),
+          () {
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return const ChooseScreen();
+              },
+            ));
+          },
+        ),
+      );
     });
     super.initState();
   }

@@ -14,7 +14,6 @@ class ThrowScreen extends StatelessWidget {
     var deviceWidth = MediaQuery.of(context).size.width;
     var shell = Shell();
 
-
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -170,12 +169,9 @@ class ThrowScreen extends StatelessWidget {
                   width: deviceWidth * 0.4,
                   child: ElevatedButton(
                     onPressed: () async {
-
                       await shell.run('''
-                      python "C:\\Aily\\yolov5\\exit_pause.py"
-                      ''');
-                      
-                    
+                        python "C:\\Aily\\Aily_ai\\exit_pause.py"
+                        ''');
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return const LoadingScreen();
