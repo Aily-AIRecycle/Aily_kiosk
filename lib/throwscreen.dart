@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:aily_kiosk/loadingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
