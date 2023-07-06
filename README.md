@@ -19,7 +19,7 @@ This repository is part of the Aily AI Recycle project. This repository contains
 
 ## Introduction
 
-This project is a plutter desktop application that enters the kiosk screen of the Aily - AIRecycler.
+This project is a flutter desktop application that enters the kiosk screen of the Aily - AIRecycler.
 
 ## Dependencies
 
@@ -45,12 +45,12 @@ The Aily_AIRecycle project is a project that automatically classifies and separa
 
 The Aily_AIRecycle project consists of the following repositories:
 
-- [Aily_embedded](https://github.com/Aily-AIRecycle/Aily_embedded): Embedded system code for Aily_AIRecycle project.
-- [Aily_ai](https://github.com/Aily-AIRecycle/Aily_ai): AI model code for Aily_AIRecycle project.
+- [Aily_embedded](https://github.com/Aily-AIRecycle/Aily_embedded): Embedded system Arduino code for Aily_AIRecycle project.
+- [Aily_ai](https://github.com/Aily-AIRecycle/Aily_ai): YOLOv5 model code for Aily_AIRecycle project.
 - [Aily_web](https://github.com/Aily-AIRecycle/Aily_web): Web application code for Aily_AIRecycle project.
-- [Aily_app](https://github.com/Aily_AIRecycle/Aily_app): Mobile application code for Aily_AIRecycle project.
-- [Aily_backend](https://github.com/Aily_AIRecycle/Aily_backend): Backend server code for Aily_AIRecycle project.
-- [Aily_kiosk](https://github.com/Aily_AIRecycle/Aily_kiosk): Kiosk application code for Aily_AIRecycle project.
+- [Aily_app](https://github.com/Aily_AIRecycle/Aily_app): Mobile flutter application code for Aily_AIRecycle project.
+- [Aily_backend](https://github.com/Aily_AIRecycle/Aily_backend): Backend Java Spring server code for Aily_AIRecycle project.
+- [Aily_kiosk](https://github.com/Aily_AIRecycle/Aily_kiosk): Kiosk flutter application code for Aily_AIRecycle project.
 
 
 
