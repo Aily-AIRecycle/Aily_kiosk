@@ -62,8 +62,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   void initState() {
-    // String trashType = readFile().toString();
-    String trashType = 'can';
+    String trashType = readFile().toString();
     Timer(const Duration(seconds: 10), () {
       defineSeconds(trashType).then(
         (seconds) => Timer(
