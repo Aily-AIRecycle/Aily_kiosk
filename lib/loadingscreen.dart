@@ -41,12 +41,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Future<int> defineSeconds() async {
     String fileContent = await readFile();
     int seconds;
-    if (fileContent.toString() == "1.0") {
+    if (fileContent.toString() == "0.0") {
       seconds = 0;
     } else if (fileContent.toString() == "2.0") {
-      seconds = 38;
-    } else if (fileContent.toString() == "3.0") {
-      seconds = 70;
+      seconds = 33;
+    } else if (fileContent.toString() == "1.0") {
+      seconds = 65;
     } else {
       seconds = 0;
     }
@@ -57,7 +57,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   void initState() {
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 10), () {
       defineSeconds().then(
         (seconds) => Timer(
           Duration(seconds: seconds),

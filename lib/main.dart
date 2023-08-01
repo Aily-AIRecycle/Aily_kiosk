@@ -1,11 +1,11 @@
-import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'mainscreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DesktopWindow.setWindowSize(const Size(1366, 728));
+  await WindowManager.instance.setFullScreen(true);
   runApp(const AilyKiosk());
 }
 

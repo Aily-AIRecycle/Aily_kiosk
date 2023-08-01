@@ -450,7 +450,7 @@ class _EarnScreenState extends State<EarnScreen> {
               ],
             ),
             SizedBox(
-              height: deviceHeight * 0.05,
+              height: deviceHeight * 0.03,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
