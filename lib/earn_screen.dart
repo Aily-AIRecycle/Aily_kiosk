@@ -1,10 +1,13 @@
-import 'package:aily_kiosk/finalscreen.dart';
+import 'package:aily_kiosk/classes/earn_point.dart';
+import 'package:aily_kiosk/final_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 class EarnScreen extends StatefulWidget {
-  const EarnScreen({super.key});
+  const EarnScreen({super.key, required this.trashType});
+
+  final String trashType;
 
   @override
   State<EarnScreen> createState() => _EarnScreenState();
@@ -186,7 +189,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}1";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -207,7 +209,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}2";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -228,7 +229,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}3";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -257,7 +257,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}4";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -278,7 +277,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}5";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -299,7 +297,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}6";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -328,7 +325,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}7";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -349,7 +345,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}8";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -370,7 +365,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}9";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -403,7 +397,6 @@ class _EarnScreenState extends State<EarnScreen> {
                                 setState(() {
                                   phoneNumber = "${phoneNumber}0";
                                 });
-                                print(phoneNumber);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xfff8b195),
@@ -465,7 +458,7 @@ class _EarnScreenState extends State<EarnScreen> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: const Text("알림"),
-                              content: Text("정말 건너뛰시겠습니까?\n$phoneNumber"),
+                              content: const Text("정말 건너뛰시겠습니까?\n"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -530,13 +523,18 @@ class _EarnScreenState extends State<EarnScreen> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () {
+                                    onPressed: () async {
+                                      var earnPoint = EarnPoint(
+                                          phoneNumber: phoneNumber,
+                                          trashType: widget.trashType);
+                                      int earnedPoint = earnPoint.earnedPoint();
+                                      await earnPoint.sendPoint();
                                       Navigator.push(context, MaterialPageRoute(
                                         builder: (context) {
                                           return FinalScreen(
                                             isEarned: true,
                                             phoneNumber: phoneNumber,
-                                            earnedPoint: 100,
+                                            earnedPoint: earnedPoint,
                                           );
                                         },
                                       ));

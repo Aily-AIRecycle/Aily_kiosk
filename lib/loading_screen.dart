@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:aily_kiosk/earn_screen.dart';
 import 'package:path/path.dart' as path;
 
-import 'package:aily_kiosk/choosescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
@@ -21,7 +21,15 @@ Future<String> readFile() async {
       var filePath = lastFile.path;
       var fileContent = File(filePath).readAsStringSync();
       print(filePath);
-      return fileContent;
+      if (fileContent == "0.0") {
+        return "can";
+      } else if (fileContent == "1.0" || fileContent == "2.0") {
+        return "pet";
+      } else if (fileContent == "3.0") {
+        return "gen";
+      } else {
+        return '';
+      }
     } else {
       return '';
     }
@@ -38,33 +46,32 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  Future<int> defineSeconds() async {
-    String fileContent = await readFile();
+  Future<int> defineSeconds(String trashType) async {
     int seconds;
-    if (fileContent.toString() == "0.0") {
+    if (trashType == "gen") {
       seconds = 0;
-    } else if (fileContent.toString() == "2.0") {
-      seconds = 33;
-    } else if (fileContent.toString() == "1.0") {
-      seconds = 65;
+    } else if (trashType == "pet") {
+      seconds = 10;
+    } else if (trashType == "can") {
+      seconds = 10;
     } else {
       seconds = 0;
     }
-    print(fileContent);
-    print(seconds);
     return seconds;
   }
 
   @override
   void initState() {
+    // String trashType = readFile().toString();
+    String trashType = 'can';
     Timer(const Duration(seconds: 10), () {
-      defineSeconds().then(
+      defineSeconds(trashType).then(
         (seconds) => Timer(
           Duration(seconds: seconds),
           () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return const ChooseScreen();
+                return EarnScreen(trashType: trashType);
               },
             ));
           },

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aily_kiosk/mainscreen.dart';
+import 'package:aily_kiosk/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
