@@ -529,6 +529,7 @@ class _EarnScreenState extends State<EarnScreen> {
                                           trashType: widget.trashType);
                                       int earnedPoint = earnPoint.earnedPoint();
                                       await earnPoint.sendPoint();
+                                      await earnPoint.sendResult();
                                       Navigator.push(context, MaterialPageRoute(
                                         builder: (context) {
                                           return FinalScreen(

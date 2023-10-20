@@ -15,7 +15,7 @@ class EarnPoint {
   void checkTrashType() {
     if (trashType == "gen") {
       gen = 1;
-      point = 0;
+      point = 100;
     } else if (trashType == "pet") {
       pet = 1;
       point = 100;
@@ -27,7 +27,7 @@ class EarnPoint {
 
   Future sendPoint() async {
     checkTrashType();
-    var url = Uri.parse('https://ailymit.store/member/member/point');
+    var url = Uri.parse('https://ailymit.store/member/point');
 
     await http.post(
       url,
@@ -37,6 +37,24 @@ class EarnPoint {
       body: jsonEncode({
         "phonenumber": phoneNumber,
         "point": point,
+        "gen": gen,
+        "pet": pet,
+        "can": can,
+      }),
+    );
+  }
+
+  Future sendResult() async {
+    checkTrashType();
+    var url = Uri.parse('https://ailymit.store/data/trashtype');
+
+    await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        "devicenumber": "1",
         "gen": gen,
         "pet": pet,
         "can": can,
