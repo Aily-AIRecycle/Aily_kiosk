@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
           children: [
             SizedBox(
               width: deviceWidth * 0.4,
-              child: Image.asset("assets/images/temp.png"),
+              child: Image.asset("assets/images/main.png"),
             ),
             SizedBox(
               height: deviceHeight * 0.04,

@@ -127,7 +127,7 @@ class ThrowScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   width: deviceWidth * 0.4,
-                  child: Image.asset("assets/images/temp.png"),
+                  child: Image.asset("assets/images/saving.png"),
                 ),
                 SizedBox(
                   width: deviceWidth * 0.4,
@@ -167,9 +167,9 @@ class ThrowScreen extends StatelessWidget {
                   width: deviceWidth * 0.4,
                   child: ElevatedButton(
                     onPressed: () async {
-                      await shell.run('''
-                        python "C:\\Aily\\Aily_ai\\exit_pause.py"
-                        ''');
+                      // await shell.run('''
+                      //   python "C:\\Aily\\Aily_ai\\exit_pause.py"
+                      //   ''');
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
                           return const LoadingScreen();
